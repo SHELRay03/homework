@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"/>
+		<title>唐代诗歌的时空感和人生哲理</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<style type="text/css">
+			* {
+				/* 页面初始化 清除页面元素原有的内外边距 */
+				padding: 0;
+				margin: 0;
+			}
+			
+		body, html {
+			height: 100%;
+			margin: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: url(img/zhuti/beijing1.jpg) no-repeat;
+			background-size: 100% 100%;
+			background-attachment: fixed;
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+		
+		body,
+			.navbar,
+			.navbar ul {
+				/* 三个元素都需要弹性布局 写一块 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.navbar {
+				/* ！！！！！！调整导航栏位置！！！！！！ */
+				position: fixed; /* 或者使用 position: absolute; 如果不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				top: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; 
+				padding: 20px;
+				margin: 20px;
+				border-radius: 50px;
+				background-color: #ddf8f0;
+			}
+			.navbar input {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				opacity: 0;
+			}
+			.navbar span {
+				/* 绝对定位 */
+				position: absolute;
+				left: 25px;
+				top: calc(50% - 10px);
+				width: 30px;
+				height: 4px;
+				border-radius: 15px;
+				background-color: #999;
+				pointer-events: none;
+				transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+			}
+			.navbar span:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+			.navbar ul {
+				width: 0;
+				overflow: hidden;
+				white-space: nowrap;
+				transition: all 0.5s;
+			}
+			.navbar ul li {
+				list-style: none;
+				margin: 0 25px;
+			}
+			.navbar ul li a {
+				/* 取消下划线 */
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 700;
+				color: #333;
+			}
+			.navbar ul li a:hover {
+				color: #00FA9A;
+			}
+			.navbar input:checked ~ ul {
+				width: 350px;
+			}
+			.navbar input:checked ~ span:nth-child(2) {
+				top: calc(50% - 2px);
+				transform: rotate(-45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			.navbar input:checked ~ span:nth-child(3) {
+				top: calc(50% - 2px);
+				transform: rotate(45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			
+		#mainDiv {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center; /* 水平居中 */
+		align-items: center; /* 垂直居中（如果只有一行元素）*/
+		max-width: 100%; /* 根据容器宽度调整 */
+		}
+		
+		#zhuti, .image-button {
+			/* 假设图片是响应式的，即设置了 max-width: 100% */
+			margin: 50px; /* 根据需要调整间距 */
+			text-align: center; /* 如果需要文本居中 */
+			flex: 0 0 auto; /* 不增长，不缩小，保持原始大小或内容大小 */
+		}
+		
+		#zhuti img, .image-button img {
+			max-width: 100%; /* 图片宽度最大为容器宽度 */
+			height: auto; /* 图片高度自动 */transition: transform 0.3s ease; /* 添加过渡效果 */
+		}
+			
+		.image-button {
+			text-decoration: none; /* 去除链接的下划线 */
+			display: flex; /* 如果需要在链接中垂直居中图片和文本 */
+			align-items: center; /* 垂直居中 */
+			justify-content: center; /* 水平居中 */
+		}
+		
+		.image-button img {
+			width: 120px; /* 图片宽度 */
+			height: auto; /* 图片高度自动 */
+			transition: transform 0.3s ease; /* 添加过渡效果 */
+		}
+		
+		</style>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.image-button img').on('mouseenter', function() {
+					$(this).css('transform', 'scale(1.2)');
+				}).on('mouseleave', function() {
+					$(this).css('transform', 'scale(1)');
+				});
+			});
+		</script>  
+</head>  
+<body>  
+	<div class="navbar">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="kaipian.html">开篇</a></li>
+				<li><a href="xiezuoshoufa.html">写作手法</a></li>
+				<li><a href="zhuti.html">主题</a></li>
+			</ul>
+		</div>
+    <div id="mainDiv">  
+        <div id="zhuti">  
+            <!-- 这里是 #kaipian 的内容，比如文本或图片 -->  
+            <img src="img/zhuti/zhuti.png" alt="Zhuti Image">  
+        </div>  
+        <a href="shikonggan.html" class="image-button">  
+            <img src="img/zhuti/zhuti1.png" alt="Button 1">  
+        </a>  
+        <a href="renshengzheli.html" class="image-button">  
+            <img src="img/zhuti/zhuti2.png" alt="Button 2">  
+        </a>  
+        <a href="zttest1.html" class="image-button">  
+            <img src="img/zhuti/zhuti3.png" alt="Button 3">  
+        </a>  
+    </div>  
+</body>  
+</html>

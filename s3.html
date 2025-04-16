@@ -1,0 +1,239 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+	<meta charset="utf-8">  
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<title>唐代诗歌的时空感和人生哲理</title>  
+	<style type="text/css">  
+		* {
+				/* 页面初始化 清除页面元素原有的内外边距 */
+				padding: 0;
+				margin: 0;
+			}
+		body {  
+			
+			width: 100%;
+			max-height:1080px;
+			margin:0 auto;
+			background: url(img/s/beijing2.jpg) no-repeat;
+			background-size: 100% 100%;
+			background-attachment: fixed;  
+			justify-content: center;  
+			align-items: flex-start;  
+			box-sizing: border-box;  
+		}  
+		
+		body,
+			.navbar,
+			.navbar ul {
+				/* 三个元素都需要弹性布局 写一块 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.navbar {
+				/* ！！！！！！调整导航栏位置！！！！！！ */
+				position: fixed; /* 或者使用 position: absolute; 如果不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				top: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; 
+				padding: 20px;
+				margin: 20px;
+				border-radius: 50px;
+				background-color: #ddf8f0;
+			}
+			.navbar input {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				opacity: 0;
+			}
+			.navbar span {
+				/* 绝对定位 */
+				position: absolute;
+				left: 25px;
+				top: calc(50% - 10px);
+				width: 30px;
+				height: 4px;
+				border-radius: 15px;
+				background-color: #999;
+				pointer-events: none;
+				transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+			}
+			.navbar span:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+			.navbar ul {
+				width: 0;
+				overflow: hidden;
+				white-space: nowrap;
+				transition: all 0.5s;
+			}
+			.navbar ul li {
+				list-style: none;
+				margin: 0 25px;
+			}
+			.navbar ul li a {
+				/* 取消下划线 */
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 700;
+				color: #333;
+			}
+			.navbar ul li a:hover {
+				color: #00FA9A;
+			}
+			.navbar input:checked ~ ul {
+				width: 350px;
+			}
+			.navbar input:checked ~ span:nth-child(2) {
+				top: calc(50% - 2px);
+				transform: rotate(-45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			.navbar input:checked ~ span:nth-child(3) {
+				top: calc(50% - 2px);
+				transform: rotate(45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+  
+.image-button1 {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 5%; /* 控制图片距离页面右边的距离 */
+			bottom: 5%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+		
+		.image-button2 {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 12%; /* 控制图片距离页面右边的距离 */
+			bottom: 5%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+  
+.image-button1 img {  
+    width: 80px; /* 设置图片的宽度，根据需要调整 */  
+    height: auto; /* 保持图片的原始纵横比 */  
+}  
+.image-button2 img {  
+    width: 80px; /* 设置图片的宽度，根据需要调整 */  
+    height: auto; /* 保持图片的原始纵横比 */  
+} 
+
+		.container {
+			font-family: 幼圆;
+			max-width: 1800px;
+			display: flex;
+			flex-wrap: nowrap;
+			margin:0 auto;
+			justify-content: center;
+			align-items: center; 
+		}  
+		  
+		.container .poem-section {
+			width: 600px;
+			left: 0;
+			padding-top:150px;
+			padding-left: 100px;
+			box-sizing: border-box;  
+		}  
+		  
+		.container .translation-section {
+			width: 900px;
+			max-width: 900px;
+			left: 0;
+			flex-direction: column;  
+			padding-top:150px;
+			padding-left: 200px;
+			padding-right: 100px;
+			box-sizing: border-box;
+		}
+		  
+		.word-translation {
+			flex: 1;
+			padding-top: 50px;
+		}
+		  
+		.full-poem-translation {
+			flex: 1;
+			padding-bottom: 20px;
+			
+		}
+		  
+		h1, h2 {
+			text-align: center;
+		}
+		  
+		p {
+			margin: 0;
+		}
+		  
+		/* 古诗样式 */  
+		.poem {
+			line-height: 1.5;
+			text-align: justify;
+		}
+		  
+		/* 翻译样式 */
+		.translation {
+			font-size: 20pt;
+			line-height: 1.5;
+		}
+	</style>
+</head>   
+<body>  
+	<div class="navbar">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="kaipian.html">开篇</a></li>
+				<li><a href="xiezuoshoufa.html">写作手法</a></li>
+				<li><a href="zhuti.html">主题</a></li>
+			</ul>
+		</div>
+	<div class="image-buttons-container">  
+        <a href="s2.html" class="image-button2">  
+            <img src="img/s/shangyiye.png">  
+        </a>  
+        <a href="s4.html" class="image-button1">  
+            <img src="img/s/xiayiye.png">  
+        </a>  
+    </div>  
+	<div class="container">  
+		<div class="poem-section">   
+			<p class="poem">  
+				<br><br>
+				<a style="font-size: 40pt;">行军九日思长安故园<sup style="font-size: 15pt;">①</sup></a><br><br> 
+				<a style="font-size: 15pt;">【作者】岑参 【朝代】唐</a><br><br>   
+				<a style="font-size: 25pt;">强<sup style="font-size: 15pt;">②</sup>欲登高<sup style="font-size: 15pt;">③</sup>去，</a><br>  
+				<a style="font-size: 25pt;">无人送酒<sup style="font-size: 15pt;">④</sup>来。</a><br>
+				<a style="font-size: 25pt;">遥怜<sup style="font-size: 15pt;">⑤</sup>故园菊，</a><br>
+				<a style="font-size: 25pt;">应傍<sup style="font-size: 15pt;">⑥</sup>战场开。</a>
+			</p>  
+		</div>  
+		<div class="translation-section"> 
+			<div class="full-poem-translation">  
+				<p class="translation">  
+					勉强地想要按照习俗去登高饮酒，可惜再没有像王弘那样的人把酒送来。<br> 
+					怜惜远方长安故园中的菊花，这时应正寂寞地在战场旁边盛开。 
+				</p>  
+			</div>
+			<div class="word-translation">  
+				<p class="translation" style="font-size: 15pt;">  
+					①选自《岑参集校注》卷三（上海古籍出版社1981年饭）。行军，行营、军营。九日，指阴历九月九日重阳节。故园，故乡。原诗注：“时未收长安。”岑参（约715-770）。江陵（今湖北荆州）人。唐代诗人。<br>  
+					②强：勉强。<br>  
+					③登高：重阳节有登高赏菊饮酒以避灾祸的风俗。<br>  
+					④送酒：此处化用有关陶渊明的典故。据南朝梁萧统《陶渊明传》记载：陶渊明重阳日在宅边的菊花丛中闷坐，刚好江州刺史王弘送酒来，于是痛饮至醉而归。<br>  
+					⑤怜：可怜。<br>  
+					⑥傍：靠近。<br>  
+					
+			</div>  
+			  
+		</div>  
+	</div>  
+</body>  
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"/>
+    <title>唐代诗歌的时空感和人生哲理</title>
+    <style type="text/css">
+        
+        body {
+            background: url("img/shikonggan/beijing1.jpg") no-repeat center center fixed;
+            background-size: cover;
+            width: 1920px;
+            max-height: 1080px;
+            margin: 0 auto;
+            background-color: #ddf8f0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        
+        #mainDiv {
+            margin-top: 70px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        * {
+            /* 页面初始化 清除页面元素原有的内外边距 */
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        .navbar,
+        .navbar ul {
+            /* 三个元素都需要弹性布局 写一块 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .navbar {
+            /* ！！！！！！调整导航栏位置！！！！！！ */
+            position: fixed; /* 或者使用 position: absolute; 如果不想它随着页面滚动 */
+            right: 5%; /* 控制图片距离页面右边的距离 */
+            top: 5%; /* 控制图片距离页面底部的距离 */
+            z-index: 2; 
+            padding: 20px;
+            margin: 20px;
+            border-radius: 50px;
+            background-color: #ddf8f0;
+        }
+        .navbar input {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0;
+        }
+        .navbar span {
+            /* 绝对定位 */
+            position: absolute;
+            left: 25px;
+            top: calc(50% - 10px);
+            width: 30px;
+            height: 4px;
+            border-radius: 15px;
+            background-color: #999;
+            pointer-events: none;
+            transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+        }
+        .navbar span:nth-child(3) {
+            top: calc(50% + 6px);
+        }
+        .navbar ul {
+            width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: all 0.5s;
+        }
+        .navbar ul li {
+            list-style: none;
+            margin: 0 25px;
+        }
+        .navbar ul li a {
+            /* 取消下划线 */
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+        .navbar ul li a:hover {
+            color: #00FA9A;
+        }
+        .navbar input:checked ~ ul {
+            width: 350px;
+        }
+        .navbar input:checked ~ span:nth-child(2) {
+            top: calc(50% - 2px);
+            transform: rotate(-45deg);
+            background-color: #00FA9A;
+            transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+        }
+        .navbar input:checked ~ span:nth-child(3) {
+            top: calc(50% - 2px);
+            transform: rotate(45deg);
+            background-color: #00FA9A;
+            transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            width: 75%;
+            max-width: 1700px;
+            height: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0.8;
+            font-family: 楷体;
+            font-size: 30px;
+        }
+
+        .title {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 50px;
+            margin-right: 50px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content p {
+            text-align: left;
+            line-height: 1.6;
+        }
+        
+		.indent {
+		    text-indent: 2em; /* 设置两个全角空格的缩进 */
+		}
+		        
+    </style>
+</head>
+<body>
+    
+    <div id="mainDiv">
+        <div class="navbar">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <ul>
+                <li><a href="kaipian.html">开篇</a></li>
+                <li><a href="xiezuoshoufa.html">写作手法</a></li>
+                <li><a href="zhuti.html">主题</a></li>
+            </ul>
+        </div>
+    
+        <div class="container">
+            <div class="title">一、空间感的广阔与细腻</div>
+            <div class="content">
+                <p class="indent">诗中首先映入眼帘的是“峨眉山”这一壮丽的自然景观。峨眉山，作为四川的名山，其雄伟与秀丽并存，为全诗奠定了空间感的基调。诗人以“峨眉山月”为起点，将读者的视线引向了遥远的天空与山川，营造了一个宏阔的空间背景。</p>
+                <p class="indent">随后，诗人又通过“平羌江”这一具体的地理坐标，进一步扩展了空间感。平羌江是流经峨眉山的一条江流，它的出现不仅丰富了画面的层次，也增加了空间的深度。江水与山月相映成趣，构成了一幅动人的山水画卷。</p>
+            </div>
+        </div>
+    
+        <div class="image-button" style="position: fixed; bottom: 20px; right: 20px;">
+	    <a href="shikonggan1-2.html">  
+	      <img src="img/shikonggan/xiayiye.png" width="80px"> 
+	    </a>  
+	  </div>
+    </div>
+</body>
+</html>

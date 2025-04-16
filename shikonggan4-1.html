@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"/>
+    <title>唐代诗歌的时空感和人生哲理</title>
+    <style type="text/css">
+        
+        body {
+            background: url("img/shikonggan/beijing1.jpg") no-repeat center center fixed;
+            background-size: cover;
+            width: 1920px;
+            max-height: 1080px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        
+        #mainDiv {
+            margin-top: 70px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        * {
+            /* 页面初始化 清除页面元素原有的内外边距 */
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        .navbar,
+        .navbar ul {
+            /* 三个元素都需要弹性布局 写一块 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .navbar {
+            /* ！！！！！！调整导航栏位置！！！！！！ */
+            position: fixed; /* 或者使用 position: absolute; 如果不想它随着页面滚动 */
+            right: 5%; /* 控制图片距离页面右边的距离 */
+            top: 5%; /* 控制图片距离页面底部的距离 */
+            z-index: 2; 
+            padding: 20px;
+            margin: 20px;
+            border-radius: 50px;
+            background-color: #ddf8f0;
+        }
+        .navbar input {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0;
+        }
+        .navbar span {
+            /* 绝对定位 */
+            position: absolute;
+            left: 25px;
+            top: calc(50% - 10px);
+            width: 30px;
+            height: 4px;
+            border-radius: 15px;
+            background-color: #999;
+            pointer-events: none;
+            transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+        }
+        .navbar span:nth-child(3) {
+            top: calc(50% + 6px);
+        }
+        .navbar ul {
+            width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: all 0.5s;
+        }
+        .navbar ul li {
+            list-style: none;
+            margin: 0 25px;
+        }
+        .navbar ul li a {
+            /* 取消下划线 */
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+        .navbar ul li a:hover {
+            color: #00FA9A;
+        }
+        .navbar input:checked ~ ul {
+            width: 350px;
+        }
+        .navbar input:checked ~ span:nth-child(2) {
+            top: calc(50% - 2px);
+            transform: rotate(-45deg);
+            background-color: #00FA9A;
+            transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+        }
+        .navbar input:checked ~ span:nth-child(3) {
+            top: calc(50% - 2px);
+            transform: rotate(45deg);
+            background-color: #00FA9A;
+            transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            width: 75%;
+            max-width: 1700px;
+            height: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0.8;
+            font-family: 楷体;
+            font-size: 30px;
+        }
+
+        .title {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 50px;
+            margin-right: 50px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content p {
+            text-align: left;
+            line-height: 1.6;
+        }
+        
+		.indent {
+		    text-indent: 2em; /* 设置两个全角空格的缩进 */
+		}
+		        
+    </style>
+</head>
+<body>
+    
+    <div id="mainDiv">
+        <div class="navbar">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <ul>
+                <li><a href="kaipian.html">开篇</a></li>
+                <li><a href="xiezuoshoufa.html">写作手法</a></li>
+                <li><a href="zhuti.html">主题</a></li>
+            </ul>
+        </div>
+    
+        <div class="container">
+            <div class="title">一、空间感的构建</div>
+            <div class="content">
+                <p>地点设定：诗中明确提到了“受降城”，这是一个具有历史意义的地方，位于今内蒙古自治区境内，曾是唐朝为防御突厥而筑的重要军事设施。这一地点的设定，不仅为诗歌提供了一个具体的空间背景，也赋予了诗歌深厚的历史文化底蕴。</p><br />
+                <p>景象描绘：诗人通过对“回乐峰前沙似雪，受降城外月如霜”的描绘，展现了一幅边塞月夜的独特景色。这里的“沙似雪”和“月如霜”不仅描绘了边塞的荒凉和寒冷，也通过对比和夸张的手法，增强了空间感的深远和广阔。</p>
+            </div>
+        </div>
+    
+        <div class="image-button" style="position: fixed; bottom: 20px; right: 20px;">
+	    <a href="shikonggan4-2.html">  
+	      <img src="img/shikonggan/xiayiye.png" width="80px"> 
+	    </a>  
+	  </div>
+    </div>
+</body>
+</html>

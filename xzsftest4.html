@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>唐代诗歌的时空感和人生哲理</title>
+		<style type="text/css">
+			body {
+				height: 100%;
+				width: 100%;
+				min-width: 1200px;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: url(img/xzsftest/beijing3.jpg) no-repeat;
+				background-size: 100% 100%;
+				background-attachment: fixed;
+				overflow-x: hidden;
+				overflow-y: hidden;
+			}
+			
+			* {
+				/* 页面初始化 清除页面元素原有的内外边距 */
+				padding: 0;
+				margin: 0;
+			}
+			
+			body,
+			.navbar,
+			.navbar ul {
+				/* 三个元素都需要弹性布局 写一块 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.navbar {
+				position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				top: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; /* 确保图片按钮在其他元素之上 */
+				/* 相对定位 
+				position: relative;*/
+				padding: 20px;
+				margin: 20px;
+				border-radius: 50px;
+				background-color: #f4e1c5;
+			}
+			.navbar input {
+				width: 40px;
+				height: 40px;
+				/* 鼠标移入变小手 */
+				cursor: pointer;
+				/* 不透明度为0 直接变透明 */
+				opacity: 0;
+			}
+			.navbar span {
+				/* 绝对定位 */
+				position: absolute;
+				left: 25px;
+				/* 现将两条线都放到一起 然后单独设置第二条线的位置 calc方法可以自动计算数值 */
+				top: calc(50% - 10px);
+				width: 30px;
+				height: 4px;
+				border-radius: 15px;
+				background-color: #999;
+				/* 这里在解决一个问题 现在span覆盖着复选框 我们鼠标放到span点不中复选框  写这个属性就能解决这个问题 即便鼠标放到span上点击也能够选中或者未选中复选框*/
+				pointer-events: none;
+				/* 收回来的时候过渡刚好相反 */
+				transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+			}
+			/* 因为第二条线在navbar这个元素内的第三个位置 所以这里写3 */
+			.navbar span:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+			.navbar ul {
+				width: 0;
+				/* 溢出隐藏 */
+				overflow: hidden;
+				/* 现在这个盒子是扁的 待会解决这个问题 */
+				/* 这个问题出现的原因是 文字被换行显示了 两个汉字竖着排列了 就撑大盒子了 */
+				/* 这个属性可以让文字就在一行排列 不换行 */
+				white-space: nowrap;
+				transition: all 0.5s;
+			}
+			.navbar ul li {
+				list-style: none;
+				margin: 0 25px;
+			}
+			.navbar ul li a {
+				/* 取消下划线 */
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 700;
+				color: #333;
+			}
+			.navbar ul li a:hover {
+				color: #b88337;
+			}
+			/* :checked是当选中的复选框的时候 ~ 是兄弟选择器 查找同一级的ul */
+			.navbar input:checked ~ ul {
+				width: 350px;
+			}
+			.navbar input:checked ~ span:nth-child(2) {
+				top: calc(50% - 2px);
+				transform: rotate(-45deg);
+				background-color: #b88337;
+				/* 现在速度太快了 加个过渡 */
+				/* 这是先执行top 然后.3s后执行transform */
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			.navbar input:checked ~ span:nth-child(3) {
+				top: calc(50% - 2px);
+				transform: rotate(45deg);
+				background-color: #b88337;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			
+			.image-button2 {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 5%; /* 控制图片距离页面右边的距离 */
+			bottom: 5%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+		
+		.image-button2 img {
+			width: 80px; /* 设置图片的宽度，你可以根据需要调整 */
+			height: auto; /* 保持图片的原始纵横比 */
+		} 
+			
+			.mainbody {
+				height: 600px;
+				width: 1000px;
+				position: absolute;
+				top: 150px;
+				display: block;
+				background-color: rgba(255, 255, 255, 0.6);
+				border-radius: 10px;
+			}
+
+			.question {
+				margin: 30px;
+				font-size: 28pt;
+			}
+
+			.options {
+				display: flex;
+				flex-direction: column;
+				font-size: 20pt;
+			}
+
+			.option {
+				margin: 10px;
+				padding: 10px;
+				border-radius: 5px;
+				cursor: pointer;
+				color: black;
+			}
+
+			.option:hover {
+				background-color: rgba(184, 131, 55, 0.7);
+			}
+
+			.result {
+				margin-top: 20px;
+				margin-left: 20px;
+				margin-right: 20px;
+				font-size: 20px;
+				color: green;
+			}
+
+			.last-question-arrow {
+				position: absolute;
+				bottom: 20px;
+				/* 距离页面底部20px */
+				right: 200px;
+				/* 距离页面右边20px */
+				display: none;
+				/* 默认不显示 */
+				cursor: pointer;
+				/* 鼠标悬停时显示指针 */
+				padding: 10px;
+				background-color: rgba(184, 131, 55, 0.7);
+				/* 和option:hover背景相同 */
+				border-radius: 5px;
+				color: white;
+				font-size: 20px;
+				text-align: center;
+			}
+
+			.next-question-arrow {
+				position: absolute;
+				bottom: 20px;
+				/* 距离页面底部20px */
+				right: 20px;
+				/* 距离页面右边20px */
+				display: none;
+				/* 默认不显示 */
+				cursor: pointer;
+				/* 鼠标悬停时显示指针 */
+				padding: 10px;
+				background-color: rgba(184, 131, 55, 0.7);
+				/* 和option:hover背景相同 */
+				border-radius: 5px;
+				color: white;
+				font-size: 20px;
+				text-align: center;
+			}
+		.title {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 80%; /* 控制图片距离页面右边的距离 */
+			bottom: 20%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="title">
+		<img src="img/xzsftest/title.png"> 
+	</div>
+		<div class="navbar">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="kaipian.html">开篇</a></li>
+				<li><a href="xiezuoshoufa.html">写作手法</a></li>
+				<li><a href="zhuti.html">主题</a></li>
+			</ul>
+		</div>
+		<div class="image-button2">
+		    <a href="xiezuoshoufa.html">  
+		        <img src="img/xzsftest/fanhuizong.png">  
+		    </a>  
+		</div> 
+		<div class="mainbody">
+			<div class="question">
+				《夜上受降城闻笛》的前两句采用了哪些修辞手法来描绘大漠与月色？
+			</div>
+
+			<div class="options">
+				<div class="option" onclick="checkAnswer('A')">A.夸张与拟人</div>
+				<div class="option" onclick="checkAnswer('B')">B.对偶与比喻</div>
+				<div class="option" onclick="checkAnswer('C')">C.排比与借代</div>
+				<div class="option" onclick="checkAnswer('D')">D.反复与设问</div>
+			</div>
+
+			<div class="result" id="result"></div>
+			<div class="last-question-arrow" onclick="goToPreviousQuestion()">返回上一题</div>
+		</div>
+
+
+		<script>
+			function checkAnswer(answer) {
+				const correctAnswer = 'B';
+				const resultDiv = document.getElementById('result');
+				const lastQuestionArrow = document.querySelector('.last-question-arrow');
+				if (answer === correctAnswer) {
+					resultDiv.innerHTML = '回答正确！<br>前两句采用对偶和比喻的修辞，将月下大漠比作白雪，将明月比作严霜，生动而形象地写出了大漠的荒寒和月色的凄冷，烘托了人物悲凉的心情，为下文思乡做铺垫。';
+					resultDiv.style.color = 'green';
+					lastQuestionArrow.style.display = 'block';
+				} else {
+					resultDiv.innerHTML = '回答错误，请再试一次！';
+					resultDiv.style.color = 'red';
+					lastQuestionArrow.style.display = 'none';
+				}
+			}
+
+			function goToPreviousQuestion() {
+				window.location.href = 'xzsftest3.html';
+			}
+
+		</script>
+
+	</body>
+</html>

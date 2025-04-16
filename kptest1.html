@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>唐代诗歌的时空感和人生哲理</title>
+		<style type="text/css">
+			body {
+				height: 100%;
+				width: 100%;
+				min-width: 1200px;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: url(img/kptest/beijing2.jpg) no-repeat;
+				background-size: 100% 100%;
+				background-attachment: fixed;
+				overflow-x: hidden;
+				overflow-y: hidden;
+			}
+			
+			* {
+				/* 页面初始化 清除页面元素原有的内外边距 */
+				padding: 0;
+				margin: 0;
+			}
+			
+			body,
+			.navbar,
+			.navbar ul {
+				/* 三个元素都需要弹性布局 写一块 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.navbar {
+				/* ！！！！！！调整导航栏位置！！！！！！ */
+				position: fixed; /* 或者使用 position: absolute; 如果不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				top: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; 
+				padding: 20px;
+				margin: 20px;
+				border-radius: 50px;
+				background-color: #ddf8f0;
+			}
+			.navbar input {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				opacity: 0;
+			}
+			.navbar span {
+				/* 绝对定位 */
+				position: absolute;
+				left: 25px;
+				top: calc(50% - 10px);
+				width: 30px;
+				height: 4px;
+				border-radius: 15px;
+				background-color: #999;
+				pointer-events: none;
+				transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+			}
+			.navbar span:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+			.navbar ul {
+				width: 0;
+				overflow: hidden;
+				white-space: nowrap;
+				transition: all 0.5s;
+			}
+			.navbar ul li {
+				list-style: none;
+				margin: 0 25px;
+			}
+			.navbar ul li a {
+				/* 取消下划线 */
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 700;
+				color: #333;
+			}
+			.navbar ul li a:hover {
+				color: #00FA9A;
+			}
+			.navbar input:checked ~ ul {
+				width: 350px;
+			}
+			.navbar input:checked ~ span:nth-child(2) {
+				top: calc(50% - 2px);
+				transform: rotate(-45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			.navbar input:checked ~ span:nth-child(3) {
+				top: calc(50% - 2px);
+				transform: rotate(45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			
+			.ffl {
+				position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				bottom: 62%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; /* 确保图片按钮在其他元素之上 */
+				animation-name: scaleDraw; /*关键帧名称*/
+				animation-timing-function: ease-in-out; /*动画的速度曲线*/
+				animation-iteration-count: infinite; /*动画播放的次数*/
+				animation-duration: 2s; /*动画所花费的时间*/
+			}
+			
+			.ffl img {
+				width: 150px; /* 设置图片的宽度，你可以根据需要调整 */
+				height: auto; /* 保持图片的原始纵横比 */
+			}
+			
+			@keyframes scaleDraw {
+				/*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+				0% {
+					transform: scale(1); /*开始为原始大小*/
+				}
+				25% {
+					transform: scale(1.2); /*放大1.2倍*/
+				}
+				50% {
+					transform: scale(1);
+				}
+				75% {
+					transform: scale(1.2);
+				}
+			}
+			
+			.mainbody {
+				height: 600px;
+				width: 1000px;
+				position: absolute;
+				top: 150px;
+				display: block;
+				background-color: rgba(255, 255, 255, 0.6);
+				border-radius: 10px;
+			}
+
+			.question {
+				margin: 30px;
+				font-size: 28pt;
+			}
+
+			.options {
+				display: flex;
+				flex-direction: column;
+				font-size: 20pt;
+			}
+
+			.option {
+				margin: 10px;
+				padding: 10px;
+				border-radius: 5px;
+				cursor: pointer;
+				color: black;
+			}
+
+			.option:hover {
+				background-color: rgba(0, 250, 154, 0.7);
+			}
+
+			.result {
+				margin-top: 20px;
+				margin-left: 20px;
+				margin-right: 20px;
+				font-size: 20px;
+				color: green;
+			}
+
+			.next-question-arrow {
+				position: absolute;
+				bottom: 20px;
+				/* 距离页面底部20px */
+				right: 20px;
+				/* 距离页面右边20px */
+				display: none;
+				/* 默认不显示 */
+				cursor: pointer;
+				/* 鼠标悬停时显示指针 */
+				padding: 10px;
+				background-color: rgba(0, 250, 154, 0.7);
+				/* 和option:hover背景相同 */
+				border-radius: 5px;
+				color: white;
+				font-size: 20px;
+				text-align: center;
+			}
+			.title {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 80%; /* 控制图片距离页面右边的距离 */
+			bottom: 20%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="title">
+		<img src="img/kptest/title.png"> 
+	</div>
+		<div class="navbar">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="kaipian.html">开篇</a></li>
+				<li><a href="xiezuoshoufa.html">写作手法</a></li>
+				<li><a href="zhuti.html">主题</a></li>
+			</ul>
+		</div>
+		<div class="ffl">
+		    <a href="srffl.html">  
+		        <img src="img/kptest/srffl.png">  
+		    </a>  
+		</div>
+		<div class="mainbody">
+			<div class="question">
+				自号少陵野老的是哪位诗人？
+			</div>
+
+			<div class="options">
+				<div class="option" onclick="checkAnswer('A')">A.李白</div>
+				<div class="option" onclick="checkAnswer('B')">B.杜甫</div>
+				<div class="option" onclick="checkAnswer('C')">C.岑参</div>
+				<div class="option" onclick="checkAnswer('D')">D.李益</div>
+			</div>
+
+			<div class="result" id="result"></div>
+
+			<div class="next-question-arrow" onclick="goToNextQuestion()">跳转下一题</div>
+		</div>
+
+
+		<script>
+			function checkAnswer(answer) {
+				const correctAnswer = 'B';
+				const resultDiv = document.getElementById('result');
+
+				const nextQuestionArrow = document.querySelector('.next-question-arrow');
+				if (answer === correctAnswer) {
+					resultDiv.innerHTML = '回答正确！<br>杜甫曾居长安城南少陵，故自称少陵野老，世称杜少陵。';
+					resultDiv.style.color = 'green';
+
+					nextQuestionArrow.style.display = 'block'; // 显示跳转下一题的箭头  
+				} else {
+					resultDiv.innerHTML = '回答错误，请再试一次！';
+					resultDiv.style.color = 'red';
+
+					nextQuestionArrow.style.display = 'none'; // 隐藏跳转下一题的箭头  
+				}
+			}
+
+
+
+			function goToNextQuestion() {
+				window.location.href = 'kptest2.html';
+			}
+		</script>
+
+	</body>
+</html>

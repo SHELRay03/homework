@@ -1,0 +1,229 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+	<meta charset="utf-8">  
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<title>唐代诗歌的时空感和人生哲理</title>  
+	<style type="text/css">  
+		* {
+				/* 页面初始化 清除页面元素原有的内外边距 */
+				padding: 0;
+				margin: 0;
+			}
+		body {  
+			
+			width: 100%;
+			max-height:1080px;
+			margin:0 auto;
+			background: url(img/s/beijing2.jpg) no-repeat;
+			background-size: 100% 100%;
+			background-attachment: fixed;  
+			justify-content: center;  
+			align-items: flex-start;  
+			box-sizing: border-box;  
+		}  
+		
+		body,
+			.navbar,
+			.navbar ul {
+				/* 三个元素都需要弹性布局 写一块 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.navbar {
+				/* ！！！！！！调整导航栏位置！！！！！！ */
+				position: fixed; /* 或者使用 position: absolute; 如果不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				top: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; 
+				padding: 20px;
+				margin: 20px;
+				border-radius: 50px;
+				background-color: #ddf8f0;
+			}
+			.navbar input {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				opacity: 0;
+			}
+			.navbar span {
+				/* 绝对定位 */
+				position: absolute;
+				left: 25px;
+				top: calc(50% - 10px);
+				width: 30px;
+				height: 4px;
+				border-radius: 15px;
+				background-color: #999;
+				pointer-events: none;
+				transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+			}
+			.navbar span:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+			.navbar ul {
+				width: 0;
+				overflow: hidden;
+				white-space: nowrap;
+				transition: all 0.5s;
+			}
+			.navbar ul li {
+				list-style: none;
+				margin: 0 25px;
+			}
+			.navbar ul li a {
+				/* 取消下划线 */
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 700;
+				color: #333;
+			}
+			.navbar ul li a:hover {
+				color: #00FA9A;
+			}
+			.navbar input:checked ~ ul {
+				width: 350px;
+			}
+			.navbar input:checked ~ span:nth-child(2) {
+				top: calc(50% - 2px);
+				transform: rotate(-45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			.navbar input:checked ~ span:nth-child(3) {
+				top: calc(50% - 2px);
+				transform: rotate(45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			
+		.image-button2 {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 5%; /* 控制图片距离页面右边的距离 */
+			bottom: 5%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+		
+		.image-button2 img {
+			width: 80px; /* 设置图片的宽度，你可以根据需要调整 */
+			height: auto; /* 保持图片的原始纵横比 */
+		}  
+
+		.container {
+			font-family: 幼圆;
+			max-width: 1800px;
+			display: flex;
+			flex-wrap: nowrap;
+			margin:0 auto;
+			justify-content: center;
+			align-items: center; 
+		}  
+		  
+		.container .poem-section {
+			width: 600px;
+			left: 0;
+			padding-top:150px;
+			padding-left: 100px;
+			box-sizing: border-box;  
+		}  
+		  
+		.container .translation-section {
+			width: 900px;
+			max-width: 900px;
+			left: 0;
+			flex-direction: column;  
+			padding-top:150px;
+			padding-left: 200px;
+			padding-right: 100px;
+			box-sizing: border-box;
+		}
+		  
+		.word-translation {
+			flex: 1;
+			padding-top: 50px;
+		}
+		  
+		.full-poem-translation {
+			flex: 1;
+			padding-bottom: 20px;
+			
+		}
+		  
+		h1, h2 {
+			text-align: center;
+		}
+		  
+		p {
+			margin: 0;
+		}
+		  
+		/* 古诗样式 */  
+		.poem {
+			line-height: 1.5;
+			text-align: justify;
+		}
+		  
+		/* 翻译样式 */
+		.translation {
+			font-size: 20pt;
+			line-height: 1.5;
+		}
+	</style>
+</head>  
+<body>  
+	<div class="navbar">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="kaipian.html">开篇</a></li>
+				<li><a href="xiezuoshoufa.html">写作手法</a></li>
+				<li><a href="zhuti.html">主题</a></li>
+			</ul>
+		</div>
+	<div class="image-button2">  
+        <a href="s2.html">  
+            <img src="img/s/xiayiye.png">  
+        </a>  
+    </div>
+	<div class="container">  
+		<div class="poem-section">   
+			<p class="poem">  
+				<a style="font-size: 40pt;">峨眉山月歌<sup style="font-size: 15pt;">①</sup></a><br><br> 
+				<a style="font-size: 15pt;">【作者】李白 【朝代】唐</a><br><br>   
+				<a style="font-size: 25pt;">峨眉山月半轮<sup style="font-size: 15pt;">②</sup>秋，</a><br>  
+				<a style="font-size: 25pt;">影<sup style="font-size: 15pt;">③</sup>入平羌<sup style="font-size: 15pt;">④</sup>江水流。</a><br>  
+				<a style="font-size: 25pt;">夜<sup style="font-size: 15pt;">⑤</sup>发<sup style="font-size: 15pt;">⑥</sup>清溪<sup style="font-size: 15pt;">⑦</sup>向三峡<sup style="font-size: 15pt;">⑧</sup>，</a><br>  
+				<a style="font-size: 25pt;">思君<sup style="font-size: 15pt;">⑨</sup>不见下<sup style="font-size: 15pt;">⑩</sup>渝州<sup style="font-size: 15pt;">⑪</sup>。</a> 
+			</p>  
+		</div>  
+		<div class="translation-section"> 
+			<div class="full-poem-translation">  
+				<p class="translation">  
+					半轮明月高高悬挂在峨眉山前，月影倒映在青衣江澄澈的水面上，仿佛在随着江水流动。<br> 
+					夜间乘船出发，离开清溪直奔三峡。想你却难相见，只能依依不舍顺江去向渝州。
+				</p>  
+			</div> 
+			<div class="word-translation">  
+				<p class="translation" style="font-size: 15pt;">  
+					①选自《李白集校注》卷八（上海古籍出版社1980年版）。<br>  
+					②半轮：半边，半个。<br>
+					③影：月光的影子。<br>
+					④平羌：即青衣江，大渡河的支流，在峨眉山东北。<br>
+					⑤夜：今夜。<br>
+					⑥发：出发。<br>
+					⑦清溪：指清溪驿，在今四川犍峨眉山附近。<br>
+					⑧三峡：指长江瞿塘峡、巫峡、西陵峡，今在重庆、湖北两省的交界处。一说指四川乐山的犁头、背峨、平羌三峡，清溪在黎头峡的上游。<br>
+					⑨君：指峨眉山月。一说指作者的友人。<br>
+					⑩下：顺流而下。<br>
+					⑪渝州：今重庆一带。<br>
+				</p>  
+			</div>  
+			 
+		</div>  
+	</div>  
+</body>  
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+	<meta charset="utf-8">  
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<title>唐代诗歌的时空感和人生哲理</title>  
+	<style type="text/css">  
+		* {
+				/* 页面初始化 清除页面元素原有的内外边距 */
+				padding: 0;
+				margin: 0;
+			}
+		body {  
+			
+			width: 100%;
+			max-height:1080px;
+			margin:0 auto;
+			background: url(img/s/beijing2.jpg) no-repeat;
+			background-size: 100% 100%;
+			background-attachment: fixed;  
+			justify-content: center;  
+			align-items: flex-start;  
+			box-sizing: border-box;  
+		}  
+		
+		body,
+			.navbar,
+			.navbar ul {
+				/* 三个元素都需要弹性布局 写一块 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.navbar {
+				/* ！！！！！！调整导航栏位置！！！！！！ */
+				position: fixed; /* 或者使用 position: absolute; 如果不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				top: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; 
+				padding: 20px;
+				margin: 20px;
+				border-radius: 50px;
+				background-color: #ddf8f0;
+			}
+			.navbar input {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				opacity: 0;
+			}
+			.navbar span {
+				/* 绝对定位 */
+				position: absolute;
+				left: 25px;
+				top: calc(50% - 10px);
+				width: 30px;
+				height: 4px;
+				border-radius: 15px;
+				background-color: #999;
+				pointer-events: none;
+				transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+			}
+			.navbar span:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+			.navbar ul {
+				width: 0;
+				overflow: hidden;
+				white-space: nowrap;
+				transition: all 0.5s;
+			}
+			.navbar ul li {
+				list-style: none;
+				margin: 0 25px;
+			}
+			.navbar ul li a {
+				/* 取消下划线 */
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 700;
+				color: #333;
+			}
+			.navbar ul li a:hover {
+				color: #00FA9A;
+			}
+			.navbar input:checked ~ ul {
+				width: 350px;
+			}
+			.navbar input:checked ~ span:nth-child(2) {
+				top: calc(50% - 2px);
+				transform: rotate(-45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			.navbar input:checked ~ span:nth-child(3) {
+				top: calc(50% - 2px);
+				transform: rotate(45deg);
+				background-color: #00FA9A;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+  
+.image-button1 {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 5%; /* 控制图片距离页面右边的距离 */
+			bottom: 5%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+		
+		.image-button2 {
+			position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+			right: 12%; /* 控制图片距离页面右边的距离 */
+			bottom: 5%; /* 控制图片距离页面底部的距离 */
+			z-index: 2; /* 确保图片按钮在其他元素之上 */
+		}
+  
+.image-button1 img {  
+    width: 80px; /* 设置图片的宽度，根据需要调整 */  
+    height: auto; /* 保持图片的原始纵横比 */  
+}  
+.image-button2 img {  
+    width: 80px; /* 设置图片的宽度，根据需要调整 */  
+    height: auto; /* 保持图片的原始纵横比 */  
+} 
+
+		.container {
+			font-family: 幼圆;
+			max-width: 1800px;
+			display: flex;
+			flex-wrap: nowrap;
+			margin:0 auto;
+			justify-content: center;
+			align-items: center; 
+		}  
+		  
+		.container .poem-section {
+			width: 600px;
+			left: 0;
+			padding-top:150px;
+			padding-left: 100px;
+			box-sizing: border-box;  
+		}  
+		  
+		.container .translation-section {
+			width: 900px;
+			max-width: 900px;
+			left: 0;
+			flex-direction: column;  
+			padding-top:150px;
+			padding-left: 200px;
+			padding-right: 100px;
+			box-sizing: border-box;
+		}
+		  
+		.word-translation {
+			flex: 1;
+			padding-top: 50px;
+		}
+		  
+		.full-poem-translation {
+			flex: 1;
+			padding-bottom: 20px;
+			
+		}
+		  
+		h1, h2 {
+			text-align: center;
+		}
+		  
+		p {
+			margin: 0;
+		}
+		  
+		/* 古诗样式 */  
+		.poem {
+			line-height: 1.5;
+			text-align: justify;
+		}
+		  
+		/* 翻译样式 */
+		.translation {
+			font-size: 20pt;
+			line-height: 1.5;
+		}
+	</style>
+</head>   
+<body>  
+	<div class="navbar">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="kaipian.html">开篇</a></li>
+				<li><a href="xiezuoshoufa.html">写作手法</a></li>
+				<li><a href="zhuti.html">主题</a></li>
+			</ul>
+		</div>
+	<div class="image-buttons-container">  
+        <a href="s3.html" class="image-button2">  
+            <img src="img/s/shangyiye.png">  
+        </a>  
+        <a href="kaipian.html" class="image-button1">  
+            <img src="img/s/fanhui.png">  
+        </a>  
+    </div> 
+	<div class="container">  
+		<div class="poem-section">   
+			<p class="poem"> 
+				<br><br><br><br>
+				<a style="font-size: 40pt;">夜上受降城闻笛<sup style="font-size: 15pt;">①</sup></a><br><br> 
+				<a style="font-size: 15pt;">【作者】李益 【朝代】唐</a><br><br>   
+				<a style="font-size: 25pt;">回乐烽<sup style="font-size: 15pt;">②</sup>前沙似雪，</a><br>  
+				<a style="font-size: 25pt;">受降城外月如霜。</a><br>
+				<a style="font-size: 25pt;">不知何处吹芦管<sup style="font-size: 15pt;">③</sup>，</a><br>
+				<a style="font-size: 25pt;">一夜征人<sup style="font-size: 15pt;">④</sup>尽<sup style="font-size: 15pt;">⑤</sup>望乡。</a>
+			</p>  
+		</div>  
+		<div class="translation-section">  
+			<div class="full-poem-translation">  
+				<p class="translation">  
+					回乐烽前的沙地白得像雪，受降城外的月色犹如秋霜。<br>
+					不知何处吹起凄凉的芦管，一夜间征人个个眺望故乡。  
+				</p>  
+			</div>
+			<div class="word-translation">  
+				<p class="translation" style="font-size: 15pt;">  
+					①选自《李益诗注》（上海古籍出版社1984版）。受降城，指西受降城，故址在今内蒙古杭锦后旗乌加河北岸。一说，指唐代灵州的受降城，故址在今宁夏灵武西南。李益（748-约829），字君虞，陇西姑臧（今甘肃武威）人，唐代诗人。<br> 
+					②回乐烽：烽火台名。在西受降城附近。一说，当作“回乐峰”，山峰名，在回乐县（今宁夏灵武西南）。<br> 
+					③芦管：笛子。一作“芦笛”。<br> 
+					④征人：指出征或戍边的军人。<br> 
+					⑤尽：全。<br>  
+					
+			</div>  
+			  
+		</div>  
+	</div>  
+</body>  
+</html>

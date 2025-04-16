@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>唐代诗歌的时空感和人生哲理</title>
+		<style type="text/css">
+			* {
+				/* 页面初始化 清除页面元素原有的内外边距 */
+				padding: 0;
+				margin: 0;
+			}
+			body {
+				height: 100%;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: url(img/zuozhejieshao/beijing3.jpg) no-repeat;
+				background-size: 100% 100%;
+				background-attachment: fixed;
+				overflow-x: hidden;
+				overflow-y: hidden;
+			}
+			body,
+			.navbar,
+			.navbar ul {
+				/* 三个元素都需要弹性布局 写一块 */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.navbar {
+				position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				top: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; /* 确保图片按钮在其他元素之上 */
+				/* 相对定位 
+				position: relative;*/
+				padding: 20px;
+				margin: 20px;
+				border-radius: 50px;
+				background-color: #f4e1c5;
+			}
+			.navbar input {
+				width: 40px;
+				height: 40px;
+				/* 鼠标移入变小手 */
+				cursor: pointer;
+				/* 不透明度为0 直接变透明 */
+				opacity: 0;
+			}
+			.navbar span {
+				/* 绝对定位 */
+				position: absolute;
+				left: 25px;
+				/* 现将两条线都放到一起 然后单独设置第二条线的位置 calc方法可以自动计算数值 */
+				top: calc(50% - 10px);
+				width: 30px;
+				height: 4px;
+				border-radius: 15px;
+				background-color: #999;
+				/* 这里在解决一个问题 现在span覆盖着复选框 我们鼠标放到span点不中复选框  写这个属性就能解决这个问题 即便鼠标放到span上点击也能够选中或者未选中复选框*/
+				pointer-events: none;
+				/* 收回来的时候过渡刚好相反 */
+				transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+			}
+			/* 因为第二条线在navbar这个元素内的第三个位置 所以这里写3 */
+			.navbar span:nth-child(3) {
+				top: calc(50% + 6px);
+			}
+			.navbar ul {
+				width: 0;
+				/* 溢出隐藏 */
+				overflow: hidden;
+				/* 现在这个盒子是扁的 待会解决这个问题 */
+				/* 这个问题出现的原因是 文字被换行显示了 两个汉字竖着排列了 就撑大盒子了 */
+				/* 这个属性可以让文字就在一行排列 不换行 */
+				white-space: nowrap;
+				transition: all 0.5s;
+			}
+			.navbar ul li {
+				list-style: none;
+				margin: 0 25px;
+			}
+			.navbar ul li a {
+				/* 取消下划线 */
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 700;
+				color: #333;
+			}
+			.navbar ul li a:hover {
+				color: #b88337;
+			}
+			/* :checked是当选中的复选框的时候 ~ 是兄弟选择器 查找同一级的ul */
+			.navbar input:checked ~ ul {
+				width: 350px;
+			}
+			.navbar input:checked ~ span:nth-child(2) {
+				top: calc(50% - 2px);
+				transform: rotate(-45deg);
+				background-color: #b88337;
+				/* 现在速度太快了 加个过渡 */
+				/* 这是先执行top 然后.3s后执行transform */
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			.navbar input:checked ~ span:nth-child(3) {
+				top: calc(50% - 2px);
+				transform: rotate(45deg);
+				background-color: #b88337;
+				transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+			}
+			
+			
+			
+			.image-button {
+				position: fixed; /* 或者使用 position: absolute; 如果你不想它随着页面滚动 */
+				right: 5%; /* 控制图片距离页面右边的距离 */
+				bottom: 5%; /* 控制图片距离页面底部的距离 */
+				z-index: 2; /* 确保图片按钮在其他元素之上 */
+			}
+			
+			.image-button img {
+				width: 80px; /* 设置图片的宽度，你可以根据需要调整 */
+				height: auto; /* 保持图片的原始纵横比 */
+			}
+			
+			#mainDiv {
+			width: 1200px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center; /* 水平居中 */
+			align-items: center; /* 垂直居中（如果只有一行元素）*/
+			max-width: 100%; /* 根据容器宽度调整 */
+			}
+			
+			
+			.a{
+			    width: 900px;
+			    margin: 0 auto;
+			    height: 600px;
+			    position: relative;
+			    top: 150px;
+			    display: flex;
+			    justify-content: center;
+			}
+			
+			.b {
+			    transition: .7s;
+			    overflow: hidden;
+			    position: relative;
+			}
+			.b img{
+				width: 450px;
+				cursor: pointer;
+				border-radius: 20px;
+			}
+			.b:hover {
+			    flex-shrink: 0;
+			    flex-grow: 0;
+				transform: scale(1.15); /* 悬停时放大图片 */  
+			}
+			
+			.text-overlay {
+				width: 350px;
+			    position: relative;
+				bottom: 10%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    opacity: 0;
+			    transition: opacity 0.3s ease;
+			    background-color: rgba(255, 255, 255, 0.6);
+			    padding: 10px;
+			    border-radius: 5px;
+			    text-align: left;
+			}
+			
+			.b:hover .text-overlay {
+			    opacity: 1;
+			}
+			.c{
+				position: relative;
+				top: 150px;
+				left: 0px;
+			}
+			.c img {
+			    width: 100px;
+			    cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="navbar">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="kaipian.html">开篇</a></li>
+				<li><a href="xiezuoshoufa.html">写作手法</a></li>
+				<li><a href="zhuti.html">主题</a></li>
+			</ul>
+		</div>
+		
+		
+		<div class="image-button">
+		    <a href="kaipian.html">  
+		        <img src="img/zuozhejieshao/fanhuizong.png">  
+		    </a>  
+		</div>  
+		<div id="mainDiv">  
+		    <div class="c">
+				<img src="img/zuozhejieshao/zuozhejieshaozi.png" id="zuozhejieshaozi" />		
+			</div>
+		    <div class="a">
+			    <div class="b">
+				    <img src="img/zuozhejieshao/LIBAI.jpg">
+				    <div class="text-overlay">李白，唐朝浪漫主义诗人，字太白，号青莲居士。祖籍陇西成纪，生于蜀郡绵州，为凉武昭王李暠九世孙。其诗作奔放，想象丰富，被誉为“诗仙”，与杜甫并称“李杜”。</div>
+			    </div>
+			    <div class="b">
+			    	<img src="img/zuozhejieshao/DUFU.jpg">
+			    	<div class="text-overlay">杜甫，唐朝现实主义诗人，字子美，自号少陵野老。祖籍襄阳，迁居巩县。诗作深沉，反映社会现实，与李白合称“大李杜”，世称“老杜”。</div>
+			    </div>
+			    <div class="b">
+			    	<img src="img/zuozhejieshao/CENSHEN.jpg">
+			    	<div class="text-overlay">岑参，唐代诗人，与高适并称“高岑”。进士及第后，曾两次从军边塞，对边塞风光和军旅生活有深切感受，边塞诗尤为出色，曾任嘉州刺史，世称“岑嘉州”。</div>
+			    </div>
+			    <div class="b">
+			    	<img src="img/zuozhejieshao/LIYI.jpg">
+			    	<div class="text-overlay">李益，唐代诗人，字君虞，祖籍凉州姑臧，后迁河南郑州。进士及第后，仕途失意，弃官漫游燕赵。以边塞诗作名世，擅长绝句，尤其七绝。</div>
+			    </div>
+		    </div>
+		</div>
+	</body>
+</html>

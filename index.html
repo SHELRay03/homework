@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"/>
+		<title>唐代诗歌的时空感和人生哲理</title>
+		<style type="text/css">
+			
+		body{	
+			width:1920px;
+			max-height:1080px;
+			margin:0 auto;
+			background-color:#ddf8f0;
+			overflow-x:hidden;
+			overflow-y: hidden;
+			}
+			
+		#mainDiv {
+			display: flex;
+			flex-direction:column;
+			justify-content: center;
+			align-items: center;
+		}
+			
+		#san{	
+			transform-origin: top left;
+			position: absolute;
+			width: 40%;
+			right: -5%;
+			bottom: 40%;
+		}
+		
+		#biaoti{
+			position: absolute;
+			width:50%;
+		    right: 40%;
+		    animation: mymove 3s forwards;
+		}
+		
+		#rotating-wrapper {
+			position: absolute; /* 设置父容器为绝对定位 */
+			/* 可以添加其他样式，如宽度、高度等 */
+			width: 400px;
+			height: 400px;
+			right: 300px;
+			bottom: -200px;
+        }
+        
+		#san2 {
+			transform-origin: center center; /* 旋转中心设置为图片中心 */
+			width: 100%; /* 假设您想要图片填满其父元素 */
+			height: auto;
+			display: block;
+			animation: spin 5s linear infinite; /* 旋转动画 */
+		}
+        
+        /* 按钮样式和定位 */  
+        .buttons-container {
+        	position: absolute; /* 假设你想要绝对定位按钮容器 */
+        	width: 500px;
+        	height: 200px;
+        	right: -8%; /* 距离右侧位置 */
+       		bottom: 50%; /* 距离底部位置 */
+        }
+  
+        /* 按钮样式 */
+       .button {
+       	display: inline-block;
+       	padding: 10px 15px;
+       	border-radius: 5px;
+       	background-color: #293D2D;
+       	color: #fff;
+       	font-family: 楷体;
+       	font-size: 20px;
+       	text-decoration: none;
+       	position: absolute; /* 绝对定位 */
+       	transition: all 0.3s ease; /* 过渡效果 */
+       	opacity: 0; /* 初始状态下隐藏按钮 */
+       	pointer-events: none; /* 防止在隐藏时点击按钮 */
+       	}
+       	
+       	/* 鼠标移上时显示按钮 */
+       	.half-circle:hover .button {
+       		opacity: 1;
+       		pointer-events: auto;	
+       	}
+       	
+       	/* 分别设定按钮的位置 */
+       	.button-1 {
+       		right: 80%; /* 距离右侧位置 */
+       		bottom: 10%; /* 距离底部位置 */
+       	}
+       	
+       	.button-2 {
+       		right: 35%; /* 距离右侧位置 */
+       		bottom: 80%; /* 距离底部位置 */
+       	}
+       	
+       	.button-3 {
+       		right: 0; /* 距离右侧位置 */
+       		bottom: 10%; /* 距离底部位置 */
+       	}
+        
+        @keyframes spin {
+        	from { transform: rotate(0deg); }
+        	to { transform: rotate(360deg); }
+        }
+        
+		@keyframes mymove {
+			from {top: -420px;}
+			to {top:200px;}
+		}
+			
+		</style>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#rotating-wrapper').hover(
+					function() {
+						$('.buttons-container .button').css('opacity', '1'); // 悬停时显示按钮
+						$('.buttons-container .button').css('pointer-events', 'auto'); // 允许点击
+					},
+					function() {
+						$('.buttons-container .button').css('opacity', '0'); // 非悬停时隐藏按钮
+						$('.buttons-container .button').css('pointer-events', 'none'); // 禁止点击
+					}
+				);
+			});
+		</script>
+	</head>
+	<body>
+		<div id="mainDiv">
+			<img src="img/index/san1.png" id="san" />	
+			<img src="img/index/biaoti1.png" id="biaoti"/>
+		</div>
+		
+		<div id="rotating-wrapper"> <!-- 创建一个可悬停的 div 包裹 img -->
+			<img src="img/index/san.png" id="san2" />
+			<div class="buttons-container">
+		</div>
+		
+		<div class="buttons-container">
+			<a href="kaipian.html" class="button button-1">开篇</a>
+			<a href="xiezuoshoufa.html" class="button button-2">写作手法</a>
+			<a href="zhuti.html" class="button button-3">主题</a>
+		</div>
+	</body>
+</html>
