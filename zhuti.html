@@ -110,21 +110,16 @@
 			transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
 		}
 
-		#mainDiv {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			max-width: 100%;
-		}
 
 		#zhuti {
+			width: 1000px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			position: relative;
 			flex-wrap: wrap;
+			z-index: 1;
 			gap: 50px;
-			/* 图片之间的间距 */
 		}
 
 
@@ -171,21 +166,19 @@
 			<li><a href="zhuti.html">主题</a></li>
 		</ul>
 	</div>
-	<div id="mainDiv">
-		<div id="zhuti">
-			<img src="img/zhuti/zhuti.png" alt="Zhuti Image">
-			<a href="shikonggan.html" class="image-button">
-				<img src="img/zhuti/zhuti1.png" alt="Button 1">
-			</a>
-			<a href="renshengzheli.html" class="image-button">
-				<img src="img/zhuti/zhuti2.png" alt="Button 2">
-			</a>
-			<a href="zttest1.html" class="image-button">
-				<img src="img/zhuti/zhuti3.png" alt="Button 3">
-			</a>
-		</div>
-
+	<div id="zhuti">
+		<img src="img/zhuti/zhuti.png" alt="Zhuti Image">
+		<a href="shikonggan.html" class="image-button">
+			<img src="img/zhuti/zhuti1.png" alt="Button 1">
+		</a>
+		<a href="renshengzheli.html" class="image-button">
+			<img src="img/zhuti/zhuti2.png" alt="Button 2">
+		</a>
+		<a href="zttest1.html" class="image-button">
+			<img src="img/zhuti/zhuti3.png" alt="Button 3">
+		</a>
 	</div>
+
 </body>
 
 </html>
